@@ -25,12 +25,13 @@
 
 #include "lis3mdl.h"
 
-bfs::Lis3mdl mag(&SPI, 10);
+bfs::Lis3mdl mag(&Wire, bfs::Lis3mdl::I2C_ADDR_PRIM);
 
 int main() {
   Serial.begin(115200);
   while (!Serial) {}
-  SPI.begin();
+  Wire.begin();
+  Wire.setClock(400000);
   if (!mag.Begin()) {
     Serial.println("Unable to communicate with LIS3MDL");
     while (1) {}

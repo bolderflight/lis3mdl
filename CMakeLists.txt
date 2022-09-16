@@ -58,5 +58,21 @@ if (DEFINED MCU)
     # Add hex and upload targets
     include(${mcu_support_SOURCE_DIR}/cmake/flash_mcu.cmake)
     FlashMcu(spi_example ${MCU} ${mcu_support_SOURCE_DIR})
+
+    # Add the i2c example target
+    add_executable(i2c_example examples/cmake/i2c.cc)
+    # Add the includes
+    target_include_directories(i2c_example PUBLIC 
+      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+      $<INSTALL_INTERFACE:include>
+    )
+    # Link libraries to the example target
+    target_link_libraries(i2c_example
+      PRIVATE
+        lis3mdl
+    )
+    # Add hex and upload targets
+    include(${mcu_support_SOURCE_DIR}/cmake/flash_mcu.cmake)
+    FlashMcu(i2c_example ${MCU} ${mcu_support_SOURCE_DIR})
   endif()
 endif()

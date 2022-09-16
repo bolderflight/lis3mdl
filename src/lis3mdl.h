@@ -72,7 +72,7 @@ class Lis3mdl {
   bool ConfigOdr(const Odr odr);
   inline Odr odr() const {return odr_;}
   bool ConfigRange(const Range range);
-  inline Range range() const {return range_;};
+  inline Range range() const {return range_;}
   bool Read();
   bool new_x_data();
   bool new_y_data();

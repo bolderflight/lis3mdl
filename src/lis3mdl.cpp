@@ -43,10 +43,6 @@ bool Lis3mdl::Begin() {
   if (who_am_i_ != LIS3MDL_WHOAMI_) {
     return false;
   }
-  /* Enable temperature sensor */
-  if (!EnableTemp()) {
-    return false;
-  }
   /* Set range to +/-16GS */
   if (!ConfigRange(RANGE_16GS)) {
     return false;
@@ -59,10 +55,11 @@ bool Lis3mdl::Begin() {
   if (!EnableContinousMode(true)) {
     return false;
   }
+  /* Enable Block Update */
   if (!EnableBdu()) {
     return false;
   }
-  while(!Read()) {}
+  while (!Read()) {}
   return true;
 }
 bool Lis3mdl::ConfigOdr(const Odr odr) {
@@ -377,7 +374,7 @@ bool Lis3mdl::ReadRegisters(const uint8_t reg, const uint8_t count,
     i2c_->endTransmission(false);
     bytes_rx_ = i2c_->requestFrom(static_cast<uint8_t>(dev_), count);
     if (bytes_rx_ == count) {
-      for (std::size_t i = 0; i < count; i++) {
+      for (size_t i = 0; i < count; i++) {
         data[i] = i2c_->read();
       }
       return true;

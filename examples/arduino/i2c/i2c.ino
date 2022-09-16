@@ -25,30 +25,32 @@
 
 #include "lis3mdl.h"
 
-bfs::Lis3mdl mag(&SPI, 10);
+bfs::Lis3mdl mag(&Wire, bfs::Lis3mdl::I2C_ADDR_PRIM);
 
-int main() {
+void setup() {
   Serial.begin(115200);
   while (!Serial) {}
-  SPI.begin();
+  Wire.begin();
+  Wire.setClock(400000);
   if (!mag.Begin()) {
     Serial.println("Unable to communicate with LIS3MDL");
     while (1) {}
   }
-  while (1) {
-    if (mag.Read()) {
-      Serial.print(mag.new_x_data());
-      Serial.print("\t");
-      Serial.print(mag.new_y_data());
-      Serial.print("\t");
-      Serial.print(mag.new_z_data());
-      Serial.print("\t");
-      Serial.print(mag.mag_x_ut());
-      Serial.print("\t");
-      Serial.print(mag.mag_y_ut());
-      Serial.print("\t");
-      Serial.print(mag.mag_z_ut());
-      Serial.print("\n");
-    }
+}
+
+void loop() {
+  if (mag.Read()) {
+    Serial.print(mag.new_x_data());
+    Serial.print("\t");
+    Serial.print(mag.new_y_data());
+    Serial.print("\t");
+    Serial.print(mag.new_z_data());
+    Serial.print("\t");
+    Serial.print(mag.mag_x_ut());
+    Serial.print("\t");
+    Serial.print(mag.mag_y_ut());
+    Serial.print("\t");
+    Serial.print(mag.mag_z_ut());
+    Serial.print("\n");
   }
 }
