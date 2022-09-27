@@ -12,7 +12,7 @@ if (DEFINED MCU)
   set(CMAKE_TOOLCHAIN_FILE "${mcu_support_SOURCE_DIR}/cmake/cortex.cmake")
   # Project information
   project(Lis3mdl
-    VERSION 1.0.0
+    VERSION 1.1.0
     DESCRIPTION "LIS3MDL sensor driver"
     LANGUAGES CXX
   )

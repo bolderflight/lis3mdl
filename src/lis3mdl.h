@@ -64,10 +64,13 @@ class Lis3mdl {
     ODR_560HZ =   0b0101,
     ODR_1000HZ =  0b0111
   };
+  Lis3mdl() {}
   Lis3mdl(TwoWire *i2c, const I2cAddr addr) : i2c_(i2c),
                                               dev_(static_cast<uint8_t>(addr)),
                                               iface_(I2C) {}
   Lis3mdl(SPIClass *spi, const uint8_t cs) : spi_(spi), dev_(cs), iface_(SPI) {}
+  void Config(TwoWire *i2c, const I2cAddr addr);
+  void Config(SPIClass *spi, const uint8_t cs);
   bool Begin();
   bool ConfigOdr(const Odr odr);
   inline Odr odr() const {return odr_;}
