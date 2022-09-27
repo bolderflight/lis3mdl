@@ -79,6 +79,8 @@ This library is within the namespace *bfs*.
 
 ## Methods
 
+**Lis3mdl()** Default constructor, requires calling the Config method to setup the I2C or SPI bus and I2C address or SPI chip select pin.
+
 **Lis3mdl(TwoWire &ast;i2c, const I2cAddr addr)** Creates a *Lis3mdl* object using I2C communication. A pointer to the bus is passed along with the I2C address. The primary address (0x1C) should be used if SDO is grounded and the secondary address (0x1E) if SDO is pulled high.
 
 ```C++
@@ -90,6 +92,10 @@ bfs::Lis3mdl mag(&Wire, bfs::Lis3mdl::I2C_ADDR_PRIM);
 ```C++
 bfs::Lis3mdl mag(&SPI, 10);
 ```
+
+**void Config(TwoWire &ast;bus, const I2cAddr addr)** This is required when using the default constructor and sets up the I2C bus and I2C address.
+
+**void Config(SPIClass &ast;spi, const uint8_t cs)** This is required when using the default constructor and sets up the SPI bus and chip select pin.
 
 **bool Begin()** Initializes communication with the sensor and sets a default configuration. True is returned on success and false on failure. Note that the bus is not initialized in this method to improve compatibility with other sensors on the bus. The default configuration is:
 

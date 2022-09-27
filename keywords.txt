@@ -31,3 +31,4 @@ new_z_data	KEYWORD2
 mag_x_ut	KEYWORD2
 mag_y_ut	KEYWORD2
 mag_z_ut	KEYWORD2
+Config	KEYWORD2

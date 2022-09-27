@@ -27,6 +27,18 @@
 
 namespace bfs {
 
+void Lis3mdl::Config(TwoWire *i2c, const I2cAddr addr) {
+  i2c_ = i2c;
+  dev_ = static_cast<uint8_t>(addr);
+  iface_ = I2C;
+}
+
+void Lis3mdl::Config(SPIClass *spi, const uint8_t cs) {
+  spi_ = spi;
+  dev_ = cs;
+  iface_ = SPI;
+}
+
 bool Lis3mdl::Begin() {
   if (iface_ == SPI) {
     pinMode(dev_, OUTPUT);
