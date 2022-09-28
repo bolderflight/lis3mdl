@@ -3,7 +3,7 @@
 ![Bolder Flight Systems Logo](img/logo-words_75.png) &nbsp; &nbsp; ![Arduino Logo](img/arduino_logo_75.png)
 
 # Lis3mdl
-This library communicates with the [LIS3MDL](https://www.st.com/en/mems-and-sensors/lis3mdl.html) magnetometer. This library is compatible with Arduino ARM and CMake build systems.
+This library communicates with the [LIS3MDL](https://www.st.com/en/mems-and-sensors/lis3mdl.html) magnetometer. This library is compatible with Arduino and CMake build systems.
    * [License](LICENSE.md)
    * [Changelog](CHANGELOG.md)
    * [Contributing guide](CONTRIBUTING.md)
