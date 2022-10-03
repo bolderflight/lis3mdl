@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.1.2
+- Changed SPI to MODE3 for better compatibility with other sensors
+
 ## v1.1.1
 - Updated core to support MMOD
 

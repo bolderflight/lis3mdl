@@ -355,7 +355,7 @@ bool Lis3mdl::WriteRegister(const uint8_t reg, const uint8_t data) {
     i2c_->write(data);
     i2c_->endTransmission();
   } else {
-    spi_->beginTransaction(SPISettings(SPI_CLOCK_, MSBFIRST, SPI_MODE0));
+    spi_->beginTransaction(SPISettings(SPI_CLOCK_, MSBFIRST, SPI_3));
     #if defined(TEENSYDUINO)
     digitalWriteFast(dev_, LOW);
     #else
@@ -394,7 +394,7 @@ bool Lis3mdl::ReadRegisters(const uint8_t reg, const uint8_t count,
       return false;
     }
   } else {
-    spi_->beginTransaction(SPISettings(SPI_CLOCK_, MSBFIRST, SPI_MODE0));
+    spi_->beginTransaction(SPISettings(SPI_CLOCK_, MSBFIRST, SPI_MODE3));
     #if defined(TEENSYDUINO)
     digitalWriteFast(dev_, LOW);
     #else
