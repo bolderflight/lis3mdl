@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.1.4
+- Fixed typo in SPI mode
+
 ## v1.1.3
 - Updated core to v3.1.2
 

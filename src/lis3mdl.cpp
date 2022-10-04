@@ -355,7 +355,7 @@ bool Lis3mdl::WriteRegister(const uint8_t reg, const uint8_t data) {
     i2c_->write(data);
     i2c_->endTransmission();
   } else {
-    spi_->beginTransaction(SPISettings(SPI_CLOCK_, MSBFIRST, SPI_3));
+    spi_->beginTransaction(SPISettings(SPI_CLOCK_, MSBFIRST, SPI_MODE3));
     #if defined(TEENSYDUINO)
     digitalWriteFast(dev_, LOW);
     #else
