@@ -55,6 +55,10 @@ bool Lis3mdl::Begin() {
   if (who_am_i_ != LIS3MDL_WHOAMI_) {
     return false;
   }
+  /* Enable temp sensor */
+  if (!EnableTemp()) {
+    return false;
+  }
   /* Set range to +/-16GS */
   if (!ConfigRange(RANGE_16GS)) {
     return false;
@@ -203,6 +207,10 @@ bool Lis3mdl::Read() {
       z_ = static_cast<int16_t>(buf_[1]) << 8 | buf_[0];
       mag_ut_[2] = static_cast<float>(z_) / scale_ * 100.0f;
     }
+  }
+  if (ReadRegisters(REG_TEMP_OUT_L_, 2, buf_)) {
+    t_ = static_cast<int16_t>(buf_[1]) << 8 | buf_[0];
+    temp_ = static_cast<float>(t_) / 8.0f + 25.0f;
   }
   return data_updated_;
 }

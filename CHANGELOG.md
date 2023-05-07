@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.2.0
+- Added die temperature data
+
 ## v1.1.5
 - Updated core to v3.1.3
 

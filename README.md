@@ -178,3 +178,5 @@ data[0] = mag.mag_x_ut();
 data[1] = mag.mag_y_ut();
 data[2] = mag.mag_z_ut();
 ```
+
+**float die_temp_c()** Returns the most recent temperature measurement from the *Lis3mdl* object in degrees C.

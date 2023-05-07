@@ -83,6 +83,7 @@ class Lis3mdl {
   inline float mag_x_ut() const {return mag_ut_[0];}
   inline float mag_y_ut() const {return mag_ut_[1];}
   inline float mag_z_ut() const {return mag_ut_[2];}
+  inline float die_temp_c() const {return temp_;}
 
  private:
   /* Comms */
@@ -121,10 +122,11 @@ class Lis3mdl {
   /* Data */
   uint8_t stat_;
   uint8_t buf_[9];
-  int16_t x_, y_, z_;
+  int16_t x_, y_, z_, t_;
   bool data_updated_;
   bool new_x_data_, new_y_data_, new_z_data_;
   float mag_ut_[3];
+  float temp_;
   float scale_;
   /* Register addresses */
   static constexpr uint8_t REG_WHO_AM_I_ = 0x0F;
